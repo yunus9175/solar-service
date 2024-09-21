@@ -31,7 +31,7 @@ const Navbar = () => {
           className="text-white font-bold text-2xl flex items-center gap-2"
         >
           <img src={logo} alt="logo" className="h-12 rounded-3xl object-fit" />
-          <h2>S B Electrical Solutions</h2>
+          <h2 className="text-lg sm:text-3xl ">S.B Electrical Solutions</h2>
         </NavLink>
 
         {/* Hamburger Icon for Mobile */}
