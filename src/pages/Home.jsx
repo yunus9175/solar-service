@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { createClient } from "@supabase/supabase-js";
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+import { supabase } from "../config/supabase";
 
 const hasVisited = "hasVisited";
 const Home = () => {
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
+
   const getVisitor = async () => {
     setLoading(true);
     let { error, count } = await supabase
@@ -21,21 +18,43 @@ const Home = () => {
     setCount(count);
     setLoading(false);
   };
-  const addVisitor = async () => {
-    setLoading(true);
-    const { error } = await supabase.from("visitors").insert([{}]).select("*");
+  const fetchGeolocation = async () => {
+    try {
+      const response = await fetch(
+        "https://api.ipgeolocation.io/ipgeo?apiKey=18911211ce24446184b030799e9feced"
+      );
+      const data = await response.json();
+      addVisitor({
+        city: data.city,
+        flag: data.country_flag,
+        country: data.country_name,
+        network: data.organization,
+      });
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching geolocation:", error);
+      addVisitor({});
+    }
+  };
+  const addVisitor = async (parameObj) => {
+    const { error } = await supabase
+      .from("visitors")
+      .insert([parameObj])
+      .select("*");
     if (error) {
       return;
     }
-    setLoading(false);
+    getVisitor();
   };
   useEffect(() => {
     if (!localStorage.getItem(hasVisited)) {
       localStorage.setItem(hasVisited, true);
-      addVisitor();
-    }
-    getVisitor();
+      fetchGeolocation();
+    } else getVisitor();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {}, []);
+
   return (
     <section
       className="h-screen bg-cover bg-center text-center flex flex-col justify-center items-center"

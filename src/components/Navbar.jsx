@@ -117,6 +117,17 @@ const Navbar = () => {
               Contact
             </NavLink>
           </li>
+          <li className="px-4 py-2">
+            <NavLink
+              to="/visitors"
+              className={({ isActive }) =>
+                `block ${isActive ? "text-blue-500" : "text-white"}`
+              }
+              onClick={() => setIsOpen(false)}
+            >
+              Visitors
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>
