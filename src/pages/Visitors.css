@@ -17,12 +17,12 @@
 }
 
 .custom-table th {
-  background-color: #f2f2f2;
+  background-color: transparent;
   font-weight: bold;
 }
 
 .custom-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: transparent;
 }
 
 .custom-table tr:hover {

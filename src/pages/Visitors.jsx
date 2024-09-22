@@ -24,10 +24,10 @@ const Visitors = () => {
   }, []);
   return (
     <div
-      className="relative  bg-cover bg-center flex items-center justify-start flex-col mt-20 "
+      className="relative  bg-cover bg-center flex items-center justify-start flex-col mt-20 overflow-y-auto "
       style={{
         backgroundImage:
-          'url("https://media.istockphoto.com/id/2158915139/photo/the-grid-of-the-solar-panel-rural-landscape-in-the-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=0GxiifyH7wbQhdDIJjRWyHQBbTh5zsjXyaelVP5tfZU=")',
+          'url("https://images.unsplash.com/photo-1559919304-00f415bab202?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
         height: `calc(100vh - 9.2vh)`,
       }}
     >
