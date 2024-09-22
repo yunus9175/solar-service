@@ -19,7 +19,7 @@ const Contact = () => (
         <p className=" text-xl">
           Phone:{" "}
           <a
-            href="tel:+1234567890"
+            href="tel:+919960168385"
             className="text-blue-400 hover:underline text-2xl"
           >
             +919960168385
