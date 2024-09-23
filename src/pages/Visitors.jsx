@@ -34,7 +34,7 @@ const Visitors = () => {
       <p className="text-lg font-bold mb-4 px-3 mt-2">
         Showing available record only
       </p>
-      <table className="custom-table ">
+      <table className="custom-table mb-6">
         <thead>
           <tr>
             <th>Flag</th>

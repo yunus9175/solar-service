@@ -9,8 +9,12 @@ const Navbar = () => {
   // Close the menu if clicking outside of it
   useEffect(() => {
     const handleClickOutside = (event) => {
+      const btn = document.querySelector("#hamburger-btn");
+
       if (navRef.current && !navRef.current.contains(event.target)) {
-        setIsOpen(false);
+        if (!btn.contains(event.target)) {
+          setIsOpen(false);
+        }
       }
     };
 
@@ -36,7 +40,10 @@ const Navbar = () => {
 
         {/* Hamburger Icon for Mobile */}
         <button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            setIsOpen((prev) => !prev);
+          }}
+          id="hamburger-btn"
           className="block lg:hidden text-white focus:outline-none"
         >
           <svg
